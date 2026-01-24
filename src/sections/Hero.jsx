@@ -1,182 +1,130 @@
 import React from 'react'
 import { FaFacebookF, FaInstagram, FaLinkedin, FaResearchgate } from "react-icons/fa";
-import { SiScopus } from "react-icons/si";
+import { SiElsevier } from "react-icons/si";
 import Typewriter from 'typewriter-effect';
 import NeuralNetworkBackground from '../components/NeuralNetworkBackground';
 import { ChevronDown } from 'lucide-react';
+import { FaGoogleScholar } from "react-icons/fa6";
+
+
 
 const Hero = () => {
-  const skills = [
-    "SolidWorks",  "SolidWorks Electrical", "AutoCAD", "ANSYS Fluent", "Python", "Visual Studio", "ReactJS", "Adobe Photoshop", "Adobe Illustrator"
-  ];
-  return (
-    <section className='relative min-h-screen flex items-center overflow-hidden'>
-      <div className='absolute inset-0'>
-        {/* Background */}
-        {/* <img src="" alt="Hero Image" className='w-full h-full object-cover opacity-40' />
-        <div className='absolute inset-0 bg-gradient-to-b from-background/20 via-background/80 to-background'/> */}
-      </div>
-      
-      {/* Green dots */}
-      <div className='absolute inset-0 overflow-hidden pointer-events-none'>
-        {/* {[...Array(30)].map((_, i) => (
-          <div 
-          className='absolute w-1.5 h-1.5 rounded-full opacity 60'
-          style={{ 
-            backgroundColor: "#20B2A6",
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animation: `slow-drift ${5 + Math.random() * 20}s ease-in-out infinite`,
-            animationDelay: `${Math.random() * 5}s`
-           }}/>
+  const skills = ["SolidWorks", "AutoCAD", "Python", "ReactJS", "Adobe Photoshop", "ANSYS Fluent"];
 
-        ))} */}
-      <NeuralNetworkBackground/>
-        
+  return (
+    <section className='relative min-h-screen flex items-center overflow-hidden py-10 md:py-0'>
+      <div className='absolute inset-0 z-0'>
+        <NeuralNetworkBackground />
       </div>
       
-      {/* Content */}
-      <div className='container mx-auto px-6 pt-32 pb-20 relative z-10 '>
-          <div className='grid lg:grid-cols-2 gap-12 items-center'>
-            {/* Left */}
-            <div className='space-y-8'>
-              <div className='animate-fade-in'>
-                <span className='inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary'>                
-                  <span className='w-2 h-2 bg-primary rounded-full animate-pulse'/>Work Hard Play Harder
-                  
-                </span>
-              </div>
-              {/* Headline */}
-              <div className='space-y-3'>
-                <h1 className='text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in'>
-                  Welcome to my 
-                  <br />
-                  <span className="font-serif italic font-normal text-white">personal 
-                  </span> 
-                  <span className='text-primary glow-text animation-delay-100'> Website</span>
-                  
-                  
-                </h1>
-                <div className='flex flex-wrap items-center gap-x-2 text-2xl font-semibold animate-fade-in animation-delay-300'>
+      <div className='container mx-auto px-6 relative z-10 mt-20'>
+        {/* Responsive Grid: Col-1 di mobile, Col-2 di Desktop */}
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center'>
+          
+          {/* Left Side: Text Content */}
+          {/* text-center di mobile, text-left di desktop */}
+          <div className='order-2 lg:order-1 space-y-6 md:space-y-8 text-center lg:text-left'>
+            <div className='animate-fade-in'>
+              <span className='inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs md:text-sm text-primary'>                
+                <span className='w-2 h-2 bg-primary rounded-full animate-pulse'/>
+                Work Hard Play Harder
+              </span>
+            </div>
+
+            <div className='space-y-4'>
+              {/* Ukuran font disesuaikan: text-4xl di mobile, text-7xl di desktop */}
+              <h1 className='text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] animate-fade-in'>
+                Welcome to my <br />
+                <span className="font-serif italic font-normal text-white">personal</span> 
+                <span className='text-primary glow-text'> Website</span>
+              </h1>
+              
+              <div className='flex flex-wrap justify-center lg:justify-start items-center gap-x-2 text-xl md:text-2xl font-semibold opacity-90'>
                 <span>Hi there, I'm a</span>
-                
-                <span className="text-primary"> {/* Tambahkan warna primer di sini agar teks menonjol */}
+                <span className="text-primary">
                   <Typewriter
                     options={{
-                      strings: [
-                        'Researcher', 
-                        'Engineer', 
-                        'Programmer',
-                        'Tech Enthusiast'
-                      ],
+                      strings: ['Researcher', 'Engineer', 'Programmer', 'Tech Enthusiast'],
                       autoStart: true,
                       loop: true,
-                      deleteSpeed: 20,
-                      delay: 75, // Kecepatan mengetik (ms)
-                      wrapperClassName: "typewriter-text", // Kamu bisa kasih class khusus untuk CSS tambahan
-                      cursorClassName: "text-primary animate-pulse" // Memberi warna pada kursor kerdip
                     }}
                   />
                 </span>
               </div>
-                  
-                
-                
-              </div>
-
-              <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-600">  
-                <button className='relative cursor-pointer bg-transparent border border-border text-foreground hover:border-primary/50 transition-all duration-1000 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 group px-6 py-3 rounded-full font-medium overflow-visible animated-border'>
-                  Contact me
-                </button>
-              </div>
-
-              {/* Social Button */}
-              <div className='flex items-center gap-x-3 mt-4 animate-fade-in animation-delay-800'>
-                <span className='text-sm text-muted-foreground'>Follow me: </span>
-                
-                {[
-                  { icon: FaLinkedin, href: "#", label: "Linkedin" },
-                  { icon: FaResearchgate, href: "#", label: "ResearchGate" }, 
-                  { icon: SiScopus, href: "#", label: "Linkedin" },
-                  { icon: FaFacebookF, href: "#", label: "Facebook" },
-                  { icon: FaInstagram, href: "#", label: "Instagram" }
-                ].map((social, index) => {
-                  // Ambil referensi komponen
-                  const Icon = social.icon; 
-                  
-                  return (
-                    <a 
-                      key={index}
-                      href={social.href} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      aria-label={social.label} // Penting untuk SEO & Aksesibilitas
-                      className='p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300'
-                    >
-                      <Icon className="w-5 h-5" />
-                    </a>
-                  );
-                })}
-              </div>
-
             </div>
-            {/* Right */}
-            <div className='relative animate-fade-in animation-delay-300'>
-              {/* Profile image */}
-              <div className='relative max-w-md mx-auto'>
-                <div className='absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/30 via-transparent to-primary/10 blur-2xl animate-pulse'/>
-                <div className='relative max-w-md mx-auto [perspective:1200px]'>
-                {/* Layer Glow statis di belakang */}
-                <div className='absolute inset-0 rounded-3xl bg-primary/10 blur-3xl' />
-                
-                {/* Container yang bergerak 3D otomatis */}
-                <div className='relative animate-auto-3d'>
-                  
-                  {/* Frame Kaca */}
-                  <div className='relative glass rounded-3xl p-2 glow-border overflow-hidden'>
-                    
-                    {/* Foto - Kita kasih translateZ lebih tinggi agar 'keluar' dari frame */}
-                    <img 
-                      src="/FotoFairuz.jpg" 
-                      alt="Fairuz MK" 
-                      className='w-full aspect-[4/5] object-cover rounded-2xl shadow-xl [transform:translateZ(30px)]'
-                    />
-                    
-                    {/* Efek Kilatan (Shimmer) agar terlihat seperti kaca beneran */}
-                    <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer pointer-events-none' />
-                  </div>
 
-                </div>
-              </div>
-              </div>
+            {/* Tombol yang lebih lebar di mobile untuk kemudahan klik */}
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4 animate-fade-in">
+              <button className='w-full sm:w-auto cursor-pointer border border-border text-foreground hover:border-primary/50 group px-8 py-3.5 rounded-full font-medium animated-border transition-all'>
+                Contact me
+              </button>
+            </div>
 
+            {/* Social Icons - Center di mobile */}
+            <div className='flex items-center justify-center lg:justify-start gap-x-3 mt-6'>
+              {[
+                { icon: FaLinkedin, label: "Linkedin", url: "https://www.linkedin.com/in/fairuz-milkiy-kuswa-6a4016110/" },
+                { icon: FaGoogleScholar, label: "Google Scholar", url: "https://scholar.google.com/citations?user=suWxEcoAAAAJ&hl=ida" },
+                { icon: FaResearchgate, label: "ResearchGate", url: "https://www.researchgate.net/profile/Fairuz-Kuswa" }, 
+                { icon: SiElsevier, label: "Scopus", url: "https://www.scopus.com/authid/detail.uri?authorId=57931825700" },
+                { icon: FaInstagram, label: "Instagram", url: "https://www.instagram.com/fairuzmilky/" }
+              ].map((social, index) => {
+                const Icon = social.icon; 
+                return (
+                  <a key={index} href={social.url} className='p-3 rounded-full glass hover:text-primary transition-all duration-300'>
+                    <Icon className="h-5 w-5 md:w-7 md:h-7" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
-          {/* Skills */}
-          <div className='mt-20 animate-fade-in animation-delay-500'>
-            <p className='text-sm text-muted-foreground mb-4 text-center'>Software I work with</p>
-              <div className='relative overflow-hidden'>
-                <div className='flex animate-marquee space-x-6'>
-                  {[...skills, ...skills].map((skill, index) => (
-                    <div key={index} className="flex-shrink-0 px-8 py-4">
-                      <span className='text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors'>{skill}</span>
-                    </div>
-                  ))}
+          {/* Right Side: 3D Image */}
+          {/* Memberikan ruang yang cukup agar 3D tidak terpotong di mobile */}
+          <div className='order-1 lg:order-2 relative animate-fade-in animation-delay-300 px-4 md:px-0'>
+            <div className='relative max-w-[280px] xs:max-w-[320px] md:max-w-md mx-auto [perspective:1200px]'>
+              <div className='absolute inset-0 rounded-3xl bg-primary/20 blur-3xl animate-pulse' />
+              <div className='relative animate-auto-3d'>
+                <div className='relative glass rounded-3xl p-2 glow-border overflow-hidden shadow-2xl'>
+                  <img 
+                    src="/foto_fairuzmk.png" 
+                    alt="Fairuz MK" 
+                    className='w-full aspect-[4/5] object-cover rounded-2xl [transform:translateZ(30px)]'
+                  />
+                  <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer pointer-events-none' />
                 </div>
               </div>
-            
+            </div>
           </div>
+
         </div>
 
-        <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-10 animate-fade-in animation-delay-700'>
-          <a href="#about" className='flex flex-col items-center text-muted-foreground hover:text-primary transition-colors cursor-pointer'>
-            <span className='text-xs tracking-wider'>SCROLL</span>
-            <ChevronDown className='animate-bounce w-6 h-6'/>
-          </a>
+        {/* Marquee: Hidden di layar sangat kecil jika terlalu ramai, atau dikecilkan */}
+        <div className='mt-16 md:mt-24 animate-fade-in'>
+          <p className='text-[10px] uppercase tracking-widest text-muted-foreground mb-6 text-center'>Software I work with</p>
+          <div className='relative mask-edge-gradient'> {/* Tambahkan efek pudar di pinggir */}
+            <div className='flex animate-marquee space-x-8 md:space-x-12'>
+              {[...skills, ...skills].map((skill, index) => (
+                <div key={index} className="flex-shrink-0">
+                  <span className='text-lg md:text-xl font-bold text-muted-foreground/30 hover:text-primary/50 transition-colors cursor-default'>
+                    {skill}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+      </div>
+      
+      {/* Scroll Down - Sembunyikan di mobile jika layar terlalu pendek */}
+      <div className='hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 text-center animate-fade-in'>
+        <div className='flex flex-col items-center text-muted-foreground'>
+          <span className='text-[10px] tracking-[0.2em]'>SCROLL</span>
+          <ChevronDown className='animate-bounce w-5 h-5'/>
+        </div>
+      </div>
     </section>
-  )
-}
+  );
+};
 
 export default Hero

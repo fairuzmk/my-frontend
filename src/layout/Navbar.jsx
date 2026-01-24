@@ -24,15 +24,18 @@ const Navbar = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 transition-all duration-500 ${isScrolled?"glass-strong py-3":"bg-transparent py-5 "} z-50`}>
       <nav className='container mx-auto flex items-center justify-between px-6'>
-        <a href="#"  className='text-xl font-bold tracking-tight hover:text-primary transition-colors duration-300'>
-          Logo
+        <div className='flex items-center gap-2'>
+        <img src="Logo_milkio.webp" alt="my logo" className='relative h-14 w-auto' />
+        <a href="#"  className='relative text-2xl font-bold tracking-tight hover:text-primary transition-colors duration-300 font-logo'>
+          MILK.io
         </a>
+        </div>
 
         {/* Desktop Nav */}
         <div className='hidden md:flex items-center gap-1'>
           <div className='glass rounded-full px-2 py-1 flex items-center gap-1'>
             {navLinks.map((link, index) => (
-              <a key={link.name} href={link.href} className='px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-surface'>
+              <a key={link.name} href={link.href} className='px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-primary transition-colors'>
                 {link.name}
               </a>
             ))
