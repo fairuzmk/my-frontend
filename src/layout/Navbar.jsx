@@ -43,13 +43,13 @@ const Navbar = () => {
             }
           </div>
         </div>
-        {/* CTA BUTTON */}
-        <div className='hidden md:block'>
-          <Button>
-            Contact
-          </Button>
-        </div>
-        {/* Mobile Menu Button */}
+        
+          <div className='hidden md:block'>
+            <Button className="cursor-pointer" onClick={() => window.open('https://app.fzmilky.my.id', '_blank')}>
+              TRY APP
+            </Button>
+          </div>
+          {/* Mobile Menu Button */}
         <button className='md:hidden p-2 text-foreground' 
         onClick={ () => setIsMobileMenuOpen((prev) => !prev) }>
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24}/>}

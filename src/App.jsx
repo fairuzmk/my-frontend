@@ -17,8 +17,8 @@ function App() {
       <main>
         <Hero/>
         <About/>
-        <Experience/>
-        <Projects/>
+        <Experience userId="699050aa2890f5692974b86f"/>
+        <Projects userId="699050aa2890f5692974b86f"/>
         <Contact/>
       </main>
      </div>
