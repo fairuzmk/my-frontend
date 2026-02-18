@@ -10,7 +10,7 @@ const Projects = ({ userId }) => {
     const fetchResearches = async () => {
       try {
         // Panggil endpoint yang tadi kita buat
-        const response = await axios.get(`http://localhost:5000/api/fzmilky/research/${userId}`);
+        const response = await axios.get(`https://fzmilky-backend.onrender.com/api/fzmilky/research/${userId}`);
         setProjects(response.data);
       } catch (error) {
         console.error("Error fetching researches:", error);

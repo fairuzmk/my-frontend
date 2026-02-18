@@ -9,7 +9,7 @@ const Experience = ({ userId }) => {
     const fetchExperiences = async () => {
       try {
         // Asumsi endpoint yang sama atau sesuaikan dengan route experience kamu
-        const response = await axios.get(`http://localhost:5000/api/fzmilky/exp/${userId}`);
+        const response = await axios.get(`https://fzmilky-backend.onrender.com/api/fzmilky/exp/${userId}`);
         setExperiences(response.data);
       } catch (error) {
         console.error("Error fetching experience:", error);
