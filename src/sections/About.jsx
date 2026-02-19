@@ -1,81 +1,79 @@
-import React from 'react'
+import React from 'react';
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
 
-const About = () => {
+const About = ({ experienceCount, researchCount, hIndex }) => {
+  // Hook untuk mendeteksi kapan section ini terlihat di layar
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Animasi hanya jalan sekali
+    threshold: 0.2,    // Mulai animasi saat 20% section terlihat
+  });
+  const currentYear = new Date().getFullYear();
+  const experienceYears = currentYear - 2018;
 
-  const highlights =[
+  const highlights = [
     {
-      icon: "💻" ,
-      tittle: "Full-Stack Development",
-      description: "Experienced in building robust web applications using modern technologies like React, Node.js, and MongoDB."
+      number: experienceCount || 0,
+      title: "Projects Completed",
+      suffix: "+"
     },
     {
-      icon: "🎨" ,
-      tittle: "UI/UX Design",
-      description: "Skilled in creating user-friendly interfaces with a focus on usability and aesthetics using tools like Figma and Adobe XD."
+      number: researchCount || 0,
+      title: "Research Published",
+      suffix: ""
     },
     {
-      icon: "⚙️" ,
-      tittle: "DevOps",
-      description: "Proficient in CI/CD pipelines, containerization with Docker, and cloud services like AWS and Azure for efficient deployment."
+      number: experienceYears || 5, // Default jika belum dihitung
+      title: "Years of Experience",
+      suffix: "+"
     },
     {
-      icon: "🔒" ,
-      tittle: "Cybersecurity",
-      description: "Knowledgeable in implementing security best practices to protect applications from vulnerabilities and threats."
+      number: hIndex || 0,
+      title: "H-Index",
+      suffix: ""
     }
-  ]
+  ];
+
   return (
-    <section id="about" className="py-32 relative overflow-hidden">
+    <section id="about" ref={ref} className="py-6 md:py-32 relative overflow-hidden">
       <div className='container mx-auto px-6 relative z-10'>
         <div className='grid lg:grid-cols-2 gap-16 items-center'>
+          
           {/* Left Column */}
           <div className='space-y-8'>
             <div className='animate-fade-in'>
-            <span className='text-secondary-foreground text-sm font-medium tracking-wider uppercase'>About Me</span>
+              <span className='text-secondary-foreground text-sm font-medium tracking-wider uppercase'>About Me</span>
             </div>
-
-          <h2 className='text-4xl md:text-5xl fontbold leading-tght animate-fade-in animation-delay-100 text-secondary-foreground'>
-            Building the future,
-            <span className='font-serif italic font-normal text-white'> {" "}
-              one component at a time
-            </span>
-          </h2>
-          <div className='space-y-4 text-muted-foreground animate-fade-in animation-delay-200'>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, esse. Repellat dignissimos eius molestiae, ad culpa voluptatibus nostrum quis distinctio cumque porro beatae unde sint corrupti facilis autem odit laborum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima tenetur fugiat, veniam quos impedit, totam necessitatibus consequuntur ratione eos facere fugit quasi modi. Eveniet autem molestias voluptas quis in iste.</p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est illo nostrum exercitationem cumque odit cum a velit, assumenda vitae dicta praesentium similique dolorum laboriosam, ducimus, ipsa iste. Placeat, sapiente animi.</p>
-
-              <div className='glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300'>
-                <p className='text-lg font-medium italic text-foreground'>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident ipsum, minus neque, modi aliquid sequi reiciendis aliquam explicabo omnis beatae odit quae possimus saepe commodi! Est repellendus autem unde ducimus!
-                </p>
-              </div>
+            <h2 className='text-2xl md:text-5xl font-bold leading-tight text-secondary-foreground'>
+              Building the future,
+              <span className='font-serif italic font-normal text-white'> one component at a time</span>
+            </h2>
+            <div className='text-sm md:text-xl space-y-4 text-muted-foreground'>
+              <p>
+                Berfokus pada integrasi antara teknologi modern dan riset ilmiah untuk menciptakan solusi yang berdampak luas.
+              </p>
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className='grid sm:grid-cols-2 gap-6 animate-fade-in animation-delay-400'>
+          {/* Right Column (Statistik) */}
+          <div className='grid sm:grid-cols-2 gap-6'>
             {highlights.map((item, idx) => (
-               <div key={idx} className="glass p-6 rounded-2xl animat-fade-in animation-delay-{500 + idx * 100} glow-border">
-                <div className='w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 hover:bg-primary/20'>
-                  <item.icon className="w-6 h-6 text-primary"/>
-                </div>
-                <h3 className='text-lg font-semibold mb-2'>{item.tittle}</h3>
-                <p className='text-sm text-muted-foreground'>
-                  {item.description}
+              <div key={idx} className="glass p-6 rounded-2xl glow-border hover:scale-105 transition-transform duration-500">
+                <p className='text-4xl font-bold text-primary mb-2'>
+                  {inView ? (
+                    <CountUp end={item.number} duration={2.5} />
+                  ) : "0"}
+                  {item.suffix}
                 </p>
-               </div>
+                <h3 className='text-lg font-semibold text-white/80'>{item.title}</h3>
+              </div>
             ))}
           </div>
 
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default About
+export default About;

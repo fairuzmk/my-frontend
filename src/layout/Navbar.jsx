@@ -7,7 +7,7 @@ const Navbar = () => {
     { name: 'Home', href: '#' },
     { name: 'About', href: '#about' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'Researchs', href: '#researchs' },
     { name: 'Contact', href: '#contact' },
   ]
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,11 +44,13 @@ const Navbar = () => {
           </div>
         </div>
         
-          <div className='hidden md:block'>
-            <Button className="cursor-pointer" onClick={() => window.open('https://app.fzmilky.my.id', '_blank')}>
+        <div className='hidden md:block'>
+          <Button asChild className="cursor-pointer">
+            <a href="https://app.fzmilky.my.id" target="_blank" rel="noopener noreferrer">
               TRY APP
-            </Button>
-          </div>
+            </a>
+          </Button>
+        </div>
           {/* Mobile Menu Button */}
         <button className='md:hidden p-2 text-foreground' 
         onClick={ () => setIsMobileMenuOpen((prev) => !prev) }>
@@ -65,7 +67,13 @@ const Navbar = () => {
             ))
 
             }
-            <Button >Contact Me</Button>
+           
+          <Button asChild className="cursor-pointer">
+            <a href="https://app.fzmilky.my.id" target="_blank" rel="noopener noreferrer">
+              TRY APP
+            </a>
+          </Button>
+        
         </div>
       </div>
     )}
